@@ -10,6 +10,8 @@
   margin: 0.5em 0;
   transition: transform 0.1s ease;
   width: 100%;
+  outline: none;
+  border: none;
 }
 
 .button:hover {
@@ -20,6 +22,12 @@
   transform: scale(0.95);
 }
 
-/** TODO: Create separate styles for .primary and .secondary variants of this button:
-* - Must use the CSS variables declared in App.css
-*/
+.primary {
+  background-color: #413ef7; 
+  color: white;
+}
+
+.secondary {
+  border: 1px solid #413ef7;
+  color: #413ef7;
+}
