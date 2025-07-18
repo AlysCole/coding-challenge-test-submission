@@ -20,7 +20,7 @@ function App() {
   /**
    * Form fields states
    */
-  const { formState, handleChange } = useForm();
+  const { formState, handleChange, resetForm } = useForm();
   const { postCode, houseNumber, firstName, lastName, selectedAddress } = formState;
 
   /**
@@ -41,13 +41,14 @@ function App() {
     e.preventDefault();
 
     setAddresses([]);
+    setError("");
+
     const { response: res, error: err } = await fetchAddress({ postcode: postCode, streetnumber: houseNumber });
     if (err) {
-      setError(error);
+      setError(err);
       return;
     }
 
-    console.log("Response:", res);
     const transformed = res.details.map((add: RawAddressModel) => transformAddress({
       ...add,
       firstName
@@ -81,6 +82,15 @@ function App() {
     }
 
     addAddress({ ...foundAddress, firstName, lastName });
+  };
+
+  const clearForm = () => {
+    // Clear form inputs
+    resetForm();
+
+    // Clear addresses and error message
+    setError("")
+    setAddresses([]);
   };
 
   return (
@@ -151,16 +161,9 @@ function App() {
           </form>
         )}
 
-        {/* TODO: Create an <ErrorMessage /> component for displaying an error message */}
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
-        {/* TODO: Add a button to clear all form fields. 
-        Button must look different from the default primary button, see design. 
-        Button text name must be "Clear all fields"
-        On Click, it must clear all form fields, remove all search results and clear all prior
-        error messages
-        */}
-        <Button variant="secondary">Clear</Button>
+        <Button variant="secondary" onClick={clearForm}>Clear</Button>
       </Section>
 
       <Section variant="dark">
