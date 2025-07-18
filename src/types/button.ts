@@ -1,4 +1,4 @@
 import { ButtonHTMLAttributes } from 'react';
 
-export type ButtonType = any;
+export type ButtonType = 'submit' | 'button' | 'reset' | undefined;
 export type ButtonVariant = 'primary' | 'secondary';
