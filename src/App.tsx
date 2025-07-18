@@ -28,6 +28,7 @@ function App() {
    */
   const [error, setError] = React.useState<undefined | string>(undefined);
   const [addresses, setAddresses] = React.useState<AddressType[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   /**
    * Redux actions
@@ -42,8 +43,11 @@ function App() {
 
     setAddresses([]);
     setError("");
+    setLoading(true);
 
     const { response: res, error: err } = await fetchAddress({ postcode: postCode, streetnumber: houseNumber });
+    setLoading(false);
+
     if (err) {
       setError(err);
       return;
@@ -121,7 +125,7 @@ function App() {
             }
           ]}
           submitText="Find"
-          loading={false}
+          loading={loading}
         />
         {addresses.length > 0 &&
           addresses.map((address) => {

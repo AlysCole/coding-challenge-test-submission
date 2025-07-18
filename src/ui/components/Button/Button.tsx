@@ -1,6 +1,8 @@
 import { ButtonType, ButtonVariant } from "@/types";
 import React, { FunctionComponent } from "react";
 
+import Spinner from "../Spinner/Spinner";
+
 import $ from "./Button.module.css";
 
 interface ButtonProps {
@@ -26,6 +28,7 @@ const Button: FunctionComponent<ButtonProps> = ({
       type={type}
       onClick={onClick}
     >
+      <Spinner loading={loading} />
       {children}
     </button>
   );
