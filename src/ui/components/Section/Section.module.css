@@ -14,3 +14,15 @@
   --color-text: #fff;
   --color-text-light: #878b9a;
 }
+
+@media only screen and (max-width: 600px) {
+  .section {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .section:last-of-type {
+    margin-bottom: 0;
+  }
+}
