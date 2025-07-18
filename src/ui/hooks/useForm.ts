@@ -20,5 +20,14 @@ export default function useForm() {
         }));
     };
 
-    return { formState, handleChange };
+    const resetForm = () => {
+        setFormState({
+            postCode: "",
+            houseNumber: "",
+            firstName: "",
+            lastName: "",
+            selectedAddress: "",
+        });
+    }
+    return { formState, handleChange, resetForm };
 }
