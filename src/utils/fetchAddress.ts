@@ -4,5 +4,11 @@ export default async function fetchAddress({ postcode, streetnumber }: { postcod
         .then((res) => [res])
         .catch((err) => [null, err]);
 
-    return { response: await response.json(), error };
+    const res = await response.json();
+
+    if (res.status === "error") {
+        return { error: res.errormessage };
+    }
+
+    return { response: res, error };
 }
