@@ -1,3 +1,9 @@
+/**
+ * Fetches addresses given a postcode and streetnumber
+ * @param {string} postcode
+ * @param {string} streetnumber
+ * @returns {object} - returns a { response, error } object
+ */
 export default async function fetchAddress({ postcode, streetnumber }: { postcode: string, streetnumber: string}) {
     const queryParams = new URLSearchParams({ postcode, streetnumber });
     const [response, error] = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getAddresses?${queryParams.toString()}`)

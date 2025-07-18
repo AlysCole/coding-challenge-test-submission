@@ -38,6 +38,7 @@ function App() {
   const handleAddressSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Reset form state on search
     setAddresses([]);
     setError("");
     setLoading(true);
@@ -50,6 +51,7 @@ function App() {
       return;
     }
 
+    // Transform response into data readable by the Address component
     const transformed = res.details.map((add: RawAddressModel) => transformAddress({
       ...add,
       firstName

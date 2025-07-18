@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+/**
+ * Custom hook for form state, handling changes, and resetting the state
+ * @returns {object} - Returns formState, handleChange, and resetForm
+ */
 export default function useForm() {
     const [formState, setFormState] = useState({
         postCode: "",
@@ -8,8 +12,6 @@ export default function useForm() {
         lastName: "",
         selectedAddress: "",
     });
-
-    console.log("Form state:", formState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.currentTarget;
