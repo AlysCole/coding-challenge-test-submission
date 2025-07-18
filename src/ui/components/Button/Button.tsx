@@ -22,13 +22,11 @@ const Button: FunctionComponent<ButtonProps> = ({
 }) => {
   return (
     <button
-      // TODO:
-      // - Display loading spinner per demo video. NOTE: add data-testid="loading-spinner" for spinner element (used for grading)
       className={`${$.button} ${variant === "secondary" ? $.secondary : $.primary}`}
       type={type}
       onClick={onClick}
     >
-      <Spinner loading={loading} />
+      <Spinner loading={loading} data-testid="loading-spinner" />
       {children}
     </button>
   );

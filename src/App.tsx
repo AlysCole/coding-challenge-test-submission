@@ -35,9 +35,6 @@ function App() {
    */
   const { addAddress } = useAddressBook();
 
-  /** TODO: Fetch addresses based on houseNumber and postCode using the local BE api
-   * - Bonus: Add a loading state in the UI while fetching addresses
-   */
   const handleAddressSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
